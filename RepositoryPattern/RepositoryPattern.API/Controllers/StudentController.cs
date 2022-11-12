@@ -14,12 +14,12 @@ namespace RepositoryPattern.API.Controllers
     public class StudentController : ControllerBase
     {
         private readonly IStudentService studentService;
-        //private readonly IMapper mapper;
+      
 
         public StudentController(IStudentService studentService, IMapper mapper)
         {
             this.studentService = studentService;
-            this.mapper = mapper;
+            
         }
 
         [HttpGet("GetList")]
@@ -79,21 +79,21 @@ namespace RepositoryPattern.API.Controllers
             return Ok();
         }
 
-        //[HttpDelete]
-        //public IActionResult Delete(StudentDto Id)
-        //{
-        //    try
-        //    {
-        //        studentService.Delete(Id);
-        //    }
-        //    catch (System.Exception)
-        //    {
+        [HttpDelete]
+        public IActionResult Delete(int Id)
+        {
+            try
+            {
+                studentService.Delete(Id);
+            }
+            catch (System.Exception)
+            {
 
-        //        return BadRequest("Hatalı Id girişi");
-        //    }
-            
-        //    return Ok("silme işlemi gerçekleşti.");
-        //}
+                return BadRequest("Hatalı Id girişi");
+            }
+
+            return Ok("silme işlemi gerçekleşti.");
+        }
     }
 }
 
